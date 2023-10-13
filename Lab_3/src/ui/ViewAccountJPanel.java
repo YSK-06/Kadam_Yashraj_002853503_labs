@@ -6,6 +6,7 @@ package ui;
 
 import business.Account;
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -157,6 +158,10 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+        Component component = userProcessContainer.getComponent(userProcessContainer.getComponentCount()-1);
+        if(component instanceof ManageAccountJPanel managePanel){
+            managePanel.populateTable();
+        }
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -178,6 +183,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         account.setRoutingNumber(txtRoutingNumber.getText());
         account.setAccountNumber(txtAccountNumber.getText());
         account.setBankName(txtBankName.getText());
+        
         
         btnSave.setEnabled(false);
         btnUpdate.setEnabled(true);
