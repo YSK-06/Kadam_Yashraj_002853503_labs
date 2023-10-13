@@ -142,14 +142,16 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
+       //Validations for Account creation fields 
+       if(String.valueOf(txtAccountNumber.getText()).equals("") || String.valueOf(txtBalance.getText()).equals("") || String.valueOf(txtBankName.getText()).equals("") || String.valueOf(txtRoutingNumber.getText()).equals("")){
+           
+          JOptionPane.showMessageDialog(this, "Please enter missing fields!");
+       }
+       else{
         String routingNumber = txtRoutingNumber.getText();
         String accountNumber = txtAccountNumber.getText();
         String bankName = txtBankName.getText();
         int balance = Integer.parseInt(txtBalance.getText());
-        
-//        if(txtAccountNumber.equals(null) || txtBalance.equals(null) || txtBankName.equals(null) || txtRoutingNumber.equals(null))
-//            JOptionPane.showMessageDialog(this, "Please enter missing fields!");
-        
         Account account = accountDirectory.addAccount();
         account.setRoutingNumber(routingNumber);
         account.setAccountNumber(accountNumber);
@@ -161,7 +163,7 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
         txtBalance.setText("");
         txtBankName.setText("");
         txtRoutingNumber.setText("");
-        
+       }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

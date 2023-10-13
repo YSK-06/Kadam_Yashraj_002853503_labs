@@ -158,8 +158,11 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         Account result = accountDirectory.searchAccount(txtAccountNumber.getText());
-        
-        if(result == null){
+        //validations for search account
+        if(String.valueOf(txtAccountNumber.getText()).equals("") || String.valueOf(txtAccountNumber.getText()).equals("Acc_number")){
+            JOptionPane.showMessageDialog(this, "Please enter an account number!", "Information!",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(result == null){
             JOptionPane.showMessageDialog(this, "Account number does not exist!", "Information!",JOptionPane.INFORMATION_MESSAGE);
         }
         else{

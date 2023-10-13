@@ -170,6 +170,11 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        //validations for empty text fields
+        if(String.valueOf(txtAccountNumber.getText()).equals("") || String.valueOf(txtBankName.getText()).equals("") || String.valueOf(txtRoutingNumber.getText()).equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter missing fields!");
+        }
+        else{
         account.setRoutingNumber(txtRoutingNumber.getText());
         account.setAccountNumber(txtAccountNumber.getText());
         account.setBankName(txtBankName.getText());
@@ -177,6 +182,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         btnSave.setEnabled(false);
         btnUpdate.setEnabled(true);
         JOptionPane.showMessageDialog(this, "Account Updated Successfully!");
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
 
