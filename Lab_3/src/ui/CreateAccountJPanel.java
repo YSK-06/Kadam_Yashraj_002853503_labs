@@ -157,7 +157,11 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
         account.setBalance(balance);
         
         JOptionPane.showMessageDialog(this, "Account Created Successfully!");
-         
+        txtAccountNumber.setText("");
+        txtBalance.setText("");
+        txtBankName.setText("");
+        txtRoutingNumber.setText("");
+        
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
