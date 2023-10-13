@@ -23,7 +23,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
      * Creates new form ViewAccountJPanel
      */
 
-    public ViewAccountJPanel(JPanel userProcessContainer, Account account) {
+    ViewAccountJPanel(JPanel userProcessContainer, Account account) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
@@ -36,7 +36,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     private void populateAccountDetails(){
         txtRoutingNumber.setText(account.getRoutingNumber());
         txtAccountNumber.setText(account.getAccountNumber());
-        txtBankName.setText(account.getBankName());
+        txtBankName.setText(account.getBankName());}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,7 +62,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("View Account");
 
-        txtRoutingNumber.setEditable(false);
+        txtRoutingNumber.setEnabled(false);
 
         lblRoutingNumber.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblRoutingNumber.setText("Routing Number:");
@@ -70,9 +70,9 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         lblAccountNumber.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblAccountNumber.setText("Account Number:");
 
-        txtAccountNumber.setEditable(false);
+        txtAccountNumber.setEnabled(false);
 
-        txtBankName.setEditable(false);
+        txtBankName.setEnabled(false);
 
         lblBankName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblBankName.setText("Bank Name:");
@@ -93,6 +93,11 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
 
         btnSave.setText("Save");
         btnSave.setEnabled(false);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -160,7 +165,19 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         txtAccountNumber.setEnabled(true);
         txtBankName.setEnabled(true);
         btnUpdate.setEnabled(false);
+        btnSave.setEnabled(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        account.setRoutingNumber(txtRoutingNumber.getText());
+        account.setAccountNumber(txtAccountNumber.getText());
+        account.setBankName(txtBankName.getText());
+        
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
+        JOptionPane.showMessageDialog(this, "Account Updated Successfully!");
+    }//GEN-LAST:event_btnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

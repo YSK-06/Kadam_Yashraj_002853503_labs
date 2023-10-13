@@ -158,8 +158,11 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         Account result = accountDirectory.searchAccount(txtAccountNumber.getText());
+        
         if(result == null){
             JOptionPane.showMessageDialog(this, "Account number does not exist!", "Information!",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
             ViewAccountJPanel panel = new ViewAccountJPanel(userProcessContainer, result);
             userProcessContainer.add("ViewAccountJPanel", panel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();

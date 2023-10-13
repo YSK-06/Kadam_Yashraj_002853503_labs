@@ -60,4 +60,8 @@ public class Account {
     public Date getCreatedOn() {
         return createdOn;
     }
+    @Override
+    public String toString(){
+        return bankName;
+    }
 }
